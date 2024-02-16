@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         fld.bt0.setOnClickListener{typeDigit(0)}
         // endregion initialise backspace button
 
-        
 
         fld.btBackSpace.setOnClickListener{removeDigit()}
 
