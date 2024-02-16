@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="horizontal"
+    android:padding="10sp"
+    >
+    <GridLayout android:id="@+id/gridButtonsAndInput" android:layout_width="0dp" app:layout_constraintWidth_percent=".35" android:layout_height="match_parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" android:columnCount="3">
+        <TextView android:id="@+id/numberInput"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:background="@drawable/textinput_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:layout_columnSpan="3"
+            android:layout_marginBottom="10dp"/>
+        <TextView android:id="@+id/bt1" style="@style/digit_button" android:text="1"/>
+        <TextView android:id="@+id/bt2" style="@style/digit_button" android:text="2"/>
+        <TextView android:id="@+id/bt3" style="@style/digit_button" android:text="3"/>
+        <TextView android:id="@+id/bt4" style="@style/digit_button" android:text="4"/>
+        <TextView android:id="@+id/bt5" style="@style/digit_button" android:text="5"/>
+        <TextView android:id="@+id/bt6" style="@style/digit_button" android:text="6"/>
+        <TextView android:id="@+id/bt7" style="@style/digit_button" android:text="7"/>
+        <TextView android:id="@+id/bt8" style="@style/digit_button" android:text="8"/>
+        <TextView android:id="@+id/bt9" style="@style/digit_button" android:text="9"/>
+        <TextView android:id="@+id/btBackSpace" style="@style/action_button" android:text="b"/>
+        <TextView android:id="@+id/bt0" style="@style/digit_button" android:text="0"/>
+        <TextView android:id="@+id/btEnter" style="@style/action_button" android:text="e"/>
+    </GridLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
