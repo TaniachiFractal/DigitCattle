@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     /** What's currently written into number input*/
     private var currentInputString = ""
 
-    lateinit var
     /** Screen dimensions */
     private var screenHeight = 0
     private var screenWidth = 0
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         fld.bt0.setOnClickListener{typeDigit(0)}
         // endregion initialise backspace button
 
-
+        
 
         fld.btBackSpace.setOnClickListener{removeDigit()}
 
