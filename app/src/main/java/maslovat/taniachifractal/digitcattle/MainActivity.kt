@@ -25,12 +25,6 @@ class MainActivity : AppCompatActivity() {
         fld = ActivityMainBinding.inflate(layoutInflater)
         setContentView(fld.root)
 
-        // region get screen dimens
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        screenHeight = displayMetrics.heightPixels
-        screenWidth = displayMetrics.widthPixels
-        // endregion get screen dimens
 
         // region initialise digit buttons
         fld.bt1.setOnClickListener{typeDigit(1)}
@@ -45,27 +39,25 @@ class MainActivity : AppCompatActivity() {
         fld.bt0.setOnClickListener{typeDigit(0)}
         // endregion initialise backspace button
 
-
         fld.btBackSpace.setOnClickListener{removeDigit()}
 
     }
     /** Check if currentInputString is valid*/
-    private fun currentInputValid():Boolean
+    private fun currentInputValid(input: String):Boolean
     {
-        if (currentInputString.length>3)
+        if (input.length>4)
             return false
-        else
-        {
-
-        }
+        else if(DigitAlreadyInString(input))
+            return false
         return true
     }
     /** Type a digit into number input based on sender*/
     private fun typeDigit(digit: Int)
     {
-        if (!currentInputValid()) return
-
-        currentInputString += digit
+        val newCurrentInputString = currentInputString+digit
+        if (currentInputValid(newCurrentInputString)) {
+            currentInputString = newCurrentInputString
+        }
         fld.numberInput.text = currentInputString
     }
     /** Remove a digit from number input*/
