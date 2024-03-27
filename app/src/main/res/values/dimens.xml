@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="font_size">40sp</dimen>
-    <dimen name="bt_size">100sp</dimen>
+    <dimen name="button_font_size">40sp</dimen>
+    <dimen name="text_font_size">15sp</dimen>
+    <dimen name="bt_size">60sp</dimen>
 </resources>

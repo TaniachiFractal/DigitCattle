@@ -1,6 +1,5 @@
 package maslovat.taniachifractal.digitcattle
 
-import android.R
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Display
@@ -8,12 +7,17 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import maslovat.taniachifractal.digitcattle.databinding.ActivityMainBinding
+import android.graphics.Color
+import countCows
 
-
+/**Working with the form*/
 class MainActivity : AppCompatActivity() {
 
     /** Link to the main layout activity_main.xml; "fld" means "field"*/
     private lateinit var fld: ActivityMainBinding
+
+    private var secretCode = newSecretCode()
+    private var currentInputCode = 0
 
     /** What's currently written into number input*/
     private var currentInputString = ""
@@ -22,20 +26,18 @@ class MainActivity : AppCompatActivity() {
     private var screenHeight = 0
     private var screenWidth = 0
 
+    /**Loading*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // convert xml elements to widgets kotlin can work with
         fld = ActivityMainBinding.inflate(layoutInflater)
         setContentView(fld.root)
 
-        screenHeight = fld.rootLayout.height
-        screenWidth = fld.rootLayout.width
-        setButtonHeight()
-
+        fld.answer.text = secretCode.toString()
 
         // region initialise onClick event for digit buttons
         fld.bt1.setOnClickListener{typeDigit(1)}
-     /*  fld.bt2.setOnClickListener{typeDigit(2)}
+         fld.bt2.setOnClickListener{typeDigit(2)}
         fld.bt3.setOnClickListener{typeDigit(3)}
         fld.bt4.setOnClickListener{typeDigit(4)}
         fld.bt5.setOnClickListener{typeDigit(5)}
@@ -46,16 +48,28 @@ class MainActivity : AppCompatActivity() {
         fld.bt0.setOnClickListener{typeDigit(0)}
         // endregion
 
-        fld.btBackSpace.setOnClickListener{removeDigit()}*/
-
+        fld.btEnter.setOnClickListener{btEnterClick()}
+        fld.btBackspace.setOnClickListener{removeDigit()}
     }
 
-    /**Set buttons height*/
-    private fun setButtonHeight()
+    private fun btEnterClick()
     {
-        fld.bt1.height
+        if (currentInputString.length<4) return
+
+        currentInputCode = getInputDigits()
+        clearInput()
     }
 
+    /**Read input s*/
+    private fun getInputDigits():Int
+    {
+        return fld.numberInput.text.toString().toInt()
+    }
+    /**fld.numberInput.text = currentInputString*/
+    private fun updateInputTB()
+    {
+        fld.numberInput.text = currentInputString
+    }
     /** Check if currentInputString is valid*/
     private fun currentInputValid(input: String):Boolean
     {
@@ -72,9 +86,9 @@ class MainActivity : AppCompatActivity() {
         if (currentInputValid(newCurrentInputString)) {
             currentInputString = newCurrentInputString
         }
-        fld.numberInput.text = currentInputString
+        updateInputTB()
     }
-    /** Remove a digit from number input*/
+    /** Remove last digit from number input*/
     private fun removeDigit()
     {
         var newString = ""
@@ -83,7 +97,12 @@ class MainActivity : AppCompatActivity() {
             newString+=currentInputString[i]
         }
         currentInputString=newString
-        fld.numberInput.text = currentInputString
+        updateInputTB()
     }
-
+    /**Reset input tb*/
+    private fun clearInput()
+    {
+        currentInputString = ""
+        updateInputTB()
+    }
 }
