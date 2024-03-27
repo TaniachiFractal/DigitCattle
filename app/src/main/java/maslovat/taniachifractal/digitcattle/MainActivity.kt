@@ -3,7 +3,10 @@ package maslovat.taniachifractal.digitcattle
 import android.R
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.Display
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.updateLayoutParams
 import maslovat.taniachifractal.digitcattle.databinding.ActivityMainBinding
 
 
@@ -25,10 +28,14 @@ class MainActivity : AppCompatActivity() {
         fld = ActivityMainBinding.inflate(layoutInflater)
         setContentView(fld.root)
 
+        screenHeight = fld.rootLayout.height
+        screenWidth = fld.rootLayout.width
+        setButtonHeight()
 
-        // region initialise digit buttons
+
+        // region initialise onClick event for digit buttons
         fld.bt1.setOnClickListener{typeDigit(1)}
-        fld.bt2.setOnClickListener{typeDigit(2)}
+     /*  fld.bt2.setOnClickListener{typeDigit(2)}
         fld.bt3.setOnClickListener{typeDigit(3)}
         fld.bt4.setOnClickListener{typeDigit(4)}
         fld.bt5.setOnClickListener{typeDigit(5)}
@@ -37,11 +44,18 @@ class MainActivity : AppCompatActivity() {
         fld.bt8.setOnClickListener{typeDigit(8)}
         fld.bt9.setOnClickListener{typeDigit(9)}
         fld.bt0.setOnClickListener{typeDigit(0)}
-        // endregion initialise backspace button
+        // endregion
 
-        fld.btBackSpace.setOnClickListener{removeDigit()}
+        fld.btBackSpace.setOnClickListener{removeDigit()}*/
 
     }
+
+    /**Set buttons height*/
+    private fun setButtonHeight()
+    {
+        fld.bt1.height
+    }
+
     /** Check if currentInputString is valid*/
     private fun currentInputValid(input: String):Boolean
     {
