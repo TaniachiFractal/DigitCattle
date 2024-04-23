@@ -18,7 +18,9 @@ class MainActivity : AppCompatActivity() {
     private var currCowCount = 0
     private var currBullCount = 0
 
-    private var triesCount = 9997
+    private var triesCount = 0
+
+    private var triesStrList = mutableListOf("")
 
     /** What's currently written into number input*/
     private var currentInputString = ""
@@ -49,6 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         fld.btEnter.setOnClickListener{btEnterClick()}
         fld.btBackspace.setOnClickListener{removeDigit()}
+
+        triesStrList.removeAt(0)
     }
 
     /**Check the user input*/
@@ -63,24 +67,34 @@ class MainActivity : AppCompatActivity() {
         currBullCount = countBulls(currentInputCode,secretCode)
         updateCowImg(currCowCount)
         updateBullImg(currCowCount,currBullCount)
-        updatePreviousTries()
         triesCount++
+        updatePreviousTries()
         updateTriesCount()
     }
 
     private var prevTries_stringCount = 0
-    /**Put the previous try into the previous tries fields*/
+    /**Put the previous try into the previous tries list*/
     private fun updatePreviousTries()
     {
-        if(prevTries_stringCount>6 || prevTries_stringCount==0)
-        {
-            prevTries_stringCount=1
-            fld.previousTries.text=currentInputCode.toString()
-            return
-        }
-        fld.previousTries.setText("${fld.previousTries.text}\n\n${currentInputCode}")
-        prevTries_stringCount++
+        triesStrList.add("${currentInputCode}\n  ${currCowCount}c${currBullCount}v")
+        prevTries_stringCount+=2
+        printPreviousTries()
     }
+
+    private fun printPreviousTries()
+    {
+        if (triesStrList.size>5)
+            triesStrList.removeAt(0)
+        fld.previousTries.text=""
+        for (i in 0..<triesStrList.size)
+        {
+            if (i==0)
+                fld.previousTries.text="${triesStrList[i]}"
+            else
+                fld.previousTries.text="${fld.previousTries.text}\n\n${triesStrList[i]}"
+        }
+    }
+
 
     private fun updateTriesCount()
     {

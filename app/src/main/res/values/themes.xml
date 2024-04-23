@@ -6,23 +6,12 @@
     </style>
 
     <style name="Theme.DigitCattle" parent="Base.Theme.DigitCattle" />
-    <style name="digit_button">
+    <style name="button">
         <item name="android:background">@drawable/button_wood</item>
         <item name="android:layout_width">@dimen/bt_size</item>
         <item name="android:layout_height">@dimen/bt_size</item>
         <item name="android:layout_marginStart">10sp</item>
-        <item name="fontFamily">@font/digitcattle_digits</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:textColor">@color/brown</item>
-    </style>
-    <style name="action_button">
-        <item name="android:background">@drawable/button_wood</item>
-        <item name="android:layout_width">72dp</item>
-        <item name="android:layout_height">@dimen/bt_size</item>
-        <item name="android:layout_marginStart">10sp</item>
-        <item name="fontFamily">@font/digitcattle_backspaceenter</item>
+        <item name="fontFamily">@font/digit_cattle</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">40sp</item>
