@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DigitCattle" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.DigitCattle" parent="Base.Theme.DigitCattle" />
+    <style name="digit_button">
+        <item name="android:background">@drawable/button_wood</item>
+        <item name="android:layout_width">@dimen/bt_size</item>
+        <item name="android:layout_height">@dimen/bt_size</item>
+        <item name="android:layout_marginStart">10sp</item>
+        <item name="fontFamily">@font/digitcattle_digits</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/brown</item>
+    </style>
+    <style name="action_button">
+        <item name="android:background">@drawable/button_wood</item>
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">@dimen/bt_size</item>
+        <item name="android:layout_marginStart">10sp</item>
+        <item name="fontFamily">@font/digitcattle_backspaceenter</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/brown</item>
+    </style>
+
+
+</resources>

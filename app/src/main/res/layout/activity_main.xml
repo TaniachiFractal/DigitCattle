@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/sky"
+    android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"
+    android:orientation="horizontal" android:padding="10sp" android:paddingEnd="40sp" android:id="@+id/rootLayout">
+
+
+    <TextView
+        android:text="0"
+        android:gravity="end"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/text_font_size"
+        android:padding="3sp"
+        android:fontFamily="@font/digitcattle_digits"
+        android:id="@+id/triesCount"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:background="@drawable/triescount_wood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/previousTries"
+        android:layout_width="105dp"
+        android:layout_height="330dp"
+        android:background="@drawable/rounded_corners"
+        android:fontFamily="@font/digitcattle_digits"
+        android:padding="10sp"
+        android:textSize="@dimen/text_font_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triesCount" />
+
+    <TextView
+        android:id="@+id/btHistory"
+        android:layout_width="@dimen/bt_size"
+        android:layout_height="@dimen/bt_size"
+        android:text="h"
+        android:fontFamily="@font/digitcattle_history"
+        android:background="@drawable/button_wood"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/text_font_size"
+        android:textAlignment="center"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/button_font_size"
+        app:layout_constraintStart_toEndOf="@+id/previousTries"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cow0"
+        android:layout_width="@dimen/cow_size"
+        android:layout_height="@dimen/cow_size"
+        android:layout_marginStart="@dimen/text_font_size"
+        app:layout_constraintBottom_toTopOf="@+id/cow2"
+        app:layout_constraintStart_toEndOf="@+id/previousTries" />
+
+    <ImageView
+        android:id="@+id/cow1"
+        android:layout_width="@dimen/cow_size"
+        android:layout_height="@dimen/cow_size"
+        app:layout_constraintBottom_toTopOf="@+id/cow3"
+        app:layout_constraintStart_toEndOf="@+id/cow0" />
+
+    <ImageView
+        android:id="@+id/cow2"
+        android:layout_width="@dimen/cow_size"
+        android:layout_height="@dimen/cow_size"
+        android:layout_marginStart="@dimen/text_font_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/previousTries" />
+
+    <ImageView
+        android:id="@+id/cow3"
+        android:layout_width="@dimen/cow_size"
+        android:layout_height="@dimen/cow_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cow2" />
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/gridButtonsAndInput"
+        android:layout_width="230sp" app:layout_constraintWidth_percent=".35"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/numberInput"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_columnSpan="3"
+            android:background="@drawable/textinput_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bt1"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberInput" />
+        <TextView
+            android:id="@+id/bt2"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="2"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toStartOf="@+id/bt3"
+            app:layout_constraintStart_toEndOf="@+id/bt1"
+            app:layout_constraintTop_toBottomOf="@+id/numberInput" />
+        <TextView
+            android:id="@+id/bt3"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="3"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberInput" />
+        <TextView
+            android:id="@+id/bt4"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="4"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt1" />
+        <TextView
+            android:id="@+id/bt5"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toStartOf="@+id/bt3"
+            app:layout_constraintStart_toEndOf="@+id/bt1"
+            app:layout_constraintTop_toBottomOf="@+id/bt2" />
+        <TextView
+            android:id="@+id/bt6"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="6"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt3" />
+        <TextView
+            android:id="@+id/bt7"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="7"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt4" />
+        <TextView
+            android:id="@+id/bt8"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="8"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toStartOf="@+id/bt3"
+            app:layout_constraintStart_toEndOf="@+id/bt1"
+            app:layout_constraintTop_toBottomOf="@+id/bt5" />
+        <TextView
+            android:id="@+id/bt9"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="9"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt6" />
+        <TextView
+            android:id="@+id/btBackspace"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_backspaceenter"
+            android:gravity="center"
+            android:text="b"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt7" />
+        <TextView
+            android:id="@+id/bt0"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_digits"
+            android:gravity="center"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toStartOf="@+id/bt3"
+            app:layout_constraintStart_toEndOf="@+id/bt1"
+            app:layout_constraintTop_toBottomOf="@+id/bt8" />
+        <TextView
+            android:id="@+id/btEnter"
+            android:layout_width="@dimen/bt_size"
+            android:layout_height="@dimen/bt_size"
+            android:background="@drawable/button_wood"
+            android:fontFamily="@font/digitcattle_backspaceenter"
+            android:gravity="center"
+            android:text="e"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/button_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
