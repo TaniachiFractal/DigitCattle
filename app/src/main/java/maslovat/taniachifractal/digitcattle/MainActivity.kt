@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     /** Show answer for debugging*/
     private fun showAnswer()
     {
-        Toast.makeText(applicationContext,secretCodeString,Toast.LENGTH_LONG).show()
+       // Toast.makeText(applicationContext,secretCodeString,Toast.LENGTH_LONG).show()
     }
 
     private lateinit var fld: ActivityMainBinding
