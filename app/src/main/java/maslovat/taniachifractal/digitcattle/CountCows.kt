@@ -1,10 +1,10 @@
 /** This function returns the number of matching digits on wrong positions in 2 numbers - Cows*/
-fun countCows(input: Int, reference: Int):Int
+fun countCows(input: String, reference: String):Int
 {
     var output = 0
 
-    val digitArrayFromInput = input.toString().toCharArray()
-    val digitArrayFromReference = reference.toString().toCharArray()
+    val digitArrayFromInput = input.toCharArray()
+    val digitArrayFromReference = reference.toCharArray()
 
     val maskOfInput =     "qwertyuiop".toCharArray()
     val maskOfReference = "asdfghjklz".toCharArray()

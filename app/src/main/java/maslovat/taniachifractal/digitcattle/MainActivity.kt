@@ -3,17 +3,19 @@ package maslovat.taniachifractal.digitcattle
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import countBulls
 import countCows
 import maslovat.taniachifractal.digitcattle.databinding.ActivityMainBinding
-import kotlin.system.exitProcess
+import maslovat.taniachifractal.digitcattle.databinding.HistoryLayoutBinding
+import maslovat.taniachifractal.digitcattle.databinding.WinLayoutBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fld: ActivityMainBinding
 
-    private var secretCode = newSecretCode()
-    private var currentInputCode = 0
+    private var secretCodeString = newSecretCode()
+    private var currentInputString = ""
 
     private var currCowCount = 0
     private var currBullCount = 0
@@ -22,8 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private var triesStrList = mutableListOf("")
 
-    /** What's currently written into number input*/
-    private var currentInputString = ""
 
     /** Array of cow sprites*/
     private var cowImg = arrayOf(R.drawable.cow_mura,R.drawable.cow_zlatka,R.drawable.cow_frederika,R.drawable.cow_moona)
@@ -49,10 +49,22 @@ class MainActivity : AppCompatActivity() {
         fld.bt0.setOnClickListener{typeDigit(0)}
         // endregion
 
-        fld.btEnter.setOnClickListener{btEnterClick()}
-        fld.btBackspace.setOnClickListener{removeDigit()}
+        fld.btEnter.setOnClickListener{ btEnterClick() }
+        fld.btBackspace.setOnClickListener{ removeDigit() }
+        fld.btHistory.setOnClickListener { btHistoryClick() }
 
         triesStrList.removeAt(0)
+    }
+
+    /**Load history dialog*/
+    private fun btHistoryClick()
+    {
+        val dialogFld = HistoryLayoutBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("История")
+            .setView(dialogFld.root)
+            .create()
+        dialog.show()
     }
 
     /**Check the user input*/
@@ -60,23 +72,56 @@ class MainActivity : AppCompatActivity() {
     {
         if (currentInputString.length<4) return
 
-        currentInputCode = getInputDigits()
-        clearInput()
         clearAllCowImg()
-        currCowCount = countCows(currentInputCode,secretCode)
-        currBullCount = countBulls(currentInputCode,secretCode)
+        currCowCount = countCows(currentInputString,secretCodeString)
+        currBullCount = countBulls(currentInputString,secretCodeString)
+        shuffleCows()
         updateCowImg(currCowCount)
         updateBullImg(currCowCount,currBullCount)
         triesCount++
         updatePreviousTries()
         updateTriesCount()
+        clearInput()
+        checkWin()
     }
 
+    /**Check if there are 4 bulls - the number has been guessed*/
+    private fun checkWin()
+    {
+        if (currBullCount==4) showWinDialog()
+    }
+
+    /**Show win dialog*/
+    private fun showWinDialog()
+    {
+        val dialogFld = WinLayoutBinding.inflate(layoutInflater)
+        val dialog= android.app.AlertDialog.Builder(this)
+            .setCancelable(false)
+            .setView(dialogFld.root)
+            .setPositiveButton("Заново"){d,which->
+                secretCodeString = newSecretCode()
+                currentInputString = ""
+                currCowCount = 0
+                currBullCount = 0
+                triesCount = 0
+                triesStrList = mutableListOf(""); triesStrList.removeAt(0)
+
+                clearAllCowImg()
+                shuffleCows()
+                fld.previousTries.text=""
+                updateTriesCount()
+                clearInput()
+            }
+            .create()
+        dialog.show()
+    }
+
+    // region prev tries
     private var prevTries_stringCount = 0
     /**Put the previous try into the previous tries list*/
     private fun updatePreviousTries()
     {
-        triesStrList.add("${currentInputCode}\n  ${currCowCount}c${currBullCount}v")
+        triesStrList.add("${currentInputString}\n  ${currCowCount}c${currBullCount}v")
         prevTries_stringCount+=2
         printPreviousTries()
     }
@@ -95,7 +140,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun updateTriesCount()
     {
         fld.triesCount.text=triesCount.toString()
@@ -112,7 +156,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // endregion
+
     // region render cows
+
+    /**Shuffle cow and bull images so that all little calves would be seen*/
+    private fun shuffleCows()
+    {
+        cowImg.shuffle()
+        bullImg.shuffle()
+    }
 
     /**Clear all cow views*/
     private fun clearAllCowImg()
@@ -165,11 +218,7 @@ class MainActivity : AppCompatActivity() {
     // endregion
 
     // region input
-    /**Read input s*/
-    private fun getInputDigits():Int
-    {
-        return fld.numberInput.text.toString().toInt()
-    }
+
     /**fld.numberInput.text = currentInputString*/
     private fun updateInputTB()
     {
@@ -211,4 +260,5 @@ class MainActivity : AppCompatActivity() {
         updateInputTB()
     }
     // endregion
+
 }

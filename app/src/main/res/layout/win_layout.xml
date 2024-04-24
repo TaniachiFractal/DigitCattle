@@ -1,7 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/sky"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/sky"
+        >
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:background="@drawable/grass"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/you_won"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingStart="50sp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/cow_moona" />
+
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/bull_kefir" />
+
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/cow_frederika" />
+
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/bull_ketchup" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/bull_borka" />
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/cow_mura" />
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/bull_ugol" />
+            <ImageView
+                android:layout_width="@dimen/win_cow_size"
+                android:layout_height="@dimen/win_cow_size"
+                android:layout_margin="@dimen/cow_padding"
+                android:src="@drawable/cow_zlatka" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</LinearLayout>
+
