@@ -94,12 +94,12 @@ class MainActivity : AppCompatActivity() {
     private fun btHelpClick()
     {
         val dialogFld = HelpLayoutBinding.inflate(layoutInflater)
-        dialogFld.info.text="Ты играешь в игру \"Digit Cattle\"! \n" +
+        dialogFld.info.text="Ты играешь в игру \"Digit Cattle\" \n" +
                 "Телефон загадал разные 4 цифры, а тебе надо их угадать.\n" +
                 "Если цифра правильная в правильной позиции, она БЫК\n" +
                 "А если правильная в неправильной позиции, она КОРОВА\n" +
                 "После каждой попытки тебе будет сказано количество БЫКОВ и КОРОВ \n" +
-                "Понятно?"
+                "Понятно? Тогда продолжим."
         val dialog = AlertDialog.Builder(this)
             .setView(dialogFld.root)
             .create()
