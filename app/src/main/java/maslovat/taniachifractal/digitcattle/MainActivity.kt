@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import countBulls
 import countCows
 import maslovat.taniachifractal.digitcattle.databinding.ActivityMainBinding
+import maslovat.taniachifractal.digitcattle.databinding.HelpLayoutBinding
 import maslovat.taniachifractal.digitcattle.databinding.HistoryLayoutBinding
 import maslovat.taniachifractal.digitcattle.databinding.WinLayoutBinding
 import java.io.File
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         fld.btEnter.setOnClickListener{ btEnterClick() }
         fld.btBackspace.setOnClickListener{ removeDigit() }
         fld.btHistory.setOnClickListener { btHistoryClick() }
+        fld.btHelp.setOnClickListener { btHelpClick() }
 
         triesStrList.removeAt(0)
     }
@@ -89,6 +91,22 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun btHelpClick()
+    {
+        val dialogFld = HelpLayoutBinding.inflate(layoutInflater)
+        dialogFld.info.text="Ты играешь в игру \"Digit Cattle\"! \n" +
+                "Телефон загадал разные 4 цифры, а тебе надо их угадать.\n" +
+                "Если цифра правильная в правильной позиции, она БЫК\n" +
+                "А если правильная в неправильной позиции, она КОРОВА\n" +
+                "После каждой попытки тебе будет сказано количество БЫКОВ и КОРОВ \n" +
+                "Понятно?"
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogFld.root)
+            .create()
+
+        dialog.show()
+    }
+
     // region history
     /**Returns the contents of the history.txt*/
     private fun getReadHistory():String
@@ -101,7 +119,7 @@ class MainActivity : AppCompatActivity() {
     private fun writeHistory()
     {
         val dateTime = LocalDateTime.now()
-        val dateTimePattern = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+        val dateTimePattern = DateTimeFormatter.ofPattern("dd.MM.yyyy   HH:mm")
         val dateTimeFormatted = dateTime.format(dateTimePattern)
         var prevHistory = ""
 
@@ -147,6 +165,9 @@ class MainActivity : AppCompatActivity() {
             .setCancelable(false)
             .setView(dialogFld.root)
             .setPositiveButton("Заново"){d,which->
+
+                writeHistory()
+
                 secretCodeString = newSecretCode()
                 currentInputString = ""
                 currCowCount = 0
@@ -159,7 +180,6 @@ class MainActivity : AppCompatActivity() {
                 fld.previousTries.text=""
                 updateTriesCount()
                 clearInput()
-                writeHistory()
                 showAnswer()
             }
             .create()

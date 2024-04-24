@@ -3,11 +3,12 @@
     android:layout_width="wrap_content"
     android:background="@drawable/sky"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:padding="3dp"
     >
 
     <ScrollView
-        android:background="@drawable/rounded_corners"
+        android:background="@drawable/rounded_wood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"

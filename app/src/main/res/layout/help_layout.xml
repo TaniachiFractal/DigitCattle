@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/sky"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:background="@drawable/rounded_wood"
+                android:id="@+id/info"
+                android:padding="@dimen/text_font_size"
+                android:textSize="14sp"
+                android:text=""
+                android:fontFamily="@font/comic_sans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:background="@drawable/rounded_wood"
+                android:textSize="@dimen/text_font_size"
+                android:padding="6sp"
+                android:fontFamily="@font/comic_sans"
+                android:text="Условные обозначения:"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:background="@drawable/rounded_wood"
+                android:textSize="@dimen/text_font_size"
+                android:padding="6sp"
+                android:fontFamily="@font/comic_sans"
+                android:text="      Корова     |       Бык"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:background="@drawable/rounded_wood"
+                android:textSize="40sp"
+                android:padding="6sp"
+                android:fontFamily="@font/digit_cattle"
+                android:text="c          v"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
