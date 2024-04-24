@@ -74,11 +74,19 @@ class MainActivity : AppCompatActivity() {
     private fun btHistoryClick()
     {
         val dialogFld = HistoryLayoutBinding.inflate(layoutInflater)
-        try{dialogFld.tbHistory.text=getReadHistory()} catch(_:Exception){}
-        val dialog = AlertDialog.Builder(this)
-            .setView(dialogFld.root)
-            .create()
-        dialog.show()
+        try
+        {
+            dialogFld.tbHistory.text=getReadHistory()
+            val dialog = AlertDialog.Builder(this)
+                .setView(dialogFld.root)
+                .create()
+            dialog.show()
+        }
+        catch(_:Exception)
+        {
+            Toast.makeText(applicationContext,"Нет истории",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     // region history
