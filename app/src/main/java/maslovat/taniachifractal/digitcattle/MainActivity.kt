@@ -1,8 +1,10 @@
 package maslovat.taniachifractal.digitcattle
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import countBulls
@@ -10,8 +12,18 @@ import countCows
 import maslovat.taniachifractal.digitcattle.databinding.ActivityMainBinding
 import maslovat.taniachifractal.digitcattle.databinding.HistoryLayoutBinding
 import maslovat.taniachifractal.digitcattle.databinding.WinLayoutBinding
-
+import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+@RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
+
+    /** Show answer for debugging*/
+    private fun showAnswer()
+    {
+        Toast.makeText(applicationContext,secretCodeString,Toast.LENGTH_LONG).show()
+    }
+
     private lateinit var fld: ActivityMainBinding
 
     private var secretCodeString = newSecretCode()
@@ -35,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         fld = ActivityMainBinding.inflate(layoutInflater)
         setContentView(fld.root)
+
+        showAnswer()
 
         // region initialise onClick event for digit buttons
         fld.bt1.setOnClickListener{typeDigit(1)}
@@ -60,12 +74,36 @@ class MainActivity : AppCompatActivity() {
     private fun btHistoryClick()
     {
         val dialogFld = HistoryLayoutBinding.inflate(layoutInflater)
+        try{dialogFld.tbHistory.text=getReadHistory()} catch(_:Exception){}
         val dialog = AlertDialog.Builder(this)
-            .setTitle("История")
             .setView(dialogFld.root)
             .create()
         dialog.show()
     }
+
+    // region history
+    /**Returns the contents of the history.txt*/
+    private fun getReadHistory():String
+    {
+        return File(filesDir,"history.txt").readText()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    /**Write history to the file*/
+    private fun writeHistory()
+    {
+        val dateTime = LocalDateTime.now()
+        val dateTimePattern = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+        val dateTimeFormatted = dateTime.format(dateTimePattern)
+        var prevHistory = ""
+
+        try
+        { prevHistory = getReadHistory() }
+        catch (_:Exception){}
+
+        File(filesDir,"history.txt").writeText("$prevHistory\n\n$dateTimeFormatted    ч${secretCodeString}    п${triesCount+1}")
+    }
+    // endregion
 
     /**Check the user input*/
     private fun btEnterClick()
@@ -85,13 +123,15 @@ class MainActivity : AppCompatActivity() {
         checkWin()
     }
 
+    // region win
+
     /**Check if there are 4 bulls - the number has been guessed*/
     private fun checkWin()
     {
         if (currBullCount==4) showWinDialog()
     }
 
-    /**Show win dialog*/
+    /**Show win dialog and init new game*/
     private fun showWinDialog()
     {
         val dialogFld = WinLayoutBinding.inflate(layoutInflater)
@@ -111,10 +151,14 @@ class MainActivity : AppCompatActivity() {
                 fld.previousTries.text=""
                 updateTriesCount()
                 clearInput()
+                writeHistory()
+                showAnswer()
             }
             .create()
         dialog.show()
     }
+
+    // endregion
 
     // region prev tries
     private var prevTries_stringCount = 0
